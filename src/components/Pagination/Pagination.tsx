@@ -22,6 +22,3 @@ export default function Pagination({ totalPages, page, setPage }: Props) {
     />
   );
 }
-
-// generate conventional commit message with scope and description based on my changes
-// commit message: refactor: replace custom pagination with react-paginate
