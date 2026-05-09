@@ -21,8 +21,6 @@ export async function fetchMovies(query: string, page: number) {
       },
     },
   );
-  console.log(import.meta.env.VITE_TMDB_TOKEN);
-  console.log(data);
 
   return data;
 }
