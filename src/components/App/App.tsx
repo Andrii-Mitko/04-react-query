@@ -6,6 +6,8 @@ import { fetchMovies } from "../../services/movieService";
 import type { Movie } from "../../types/movie";
 import { useQuery } from "@tanstack/react-query";
 import Pagination from "../Pagination/Pagination";
+import Loader from "../Loader/Loader";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 export default function App() {
   const [query, setQuery] = useState("");
@@ -40,7 +42,9 @@ export default function App() {
           onClose={() => setSelectedMovie(null)}
         />
       )}
+      {isLoading && <Loader />}
 
+      {isError && <ErrorMessage />}
       {movies.length > 0 && (
         <>
           <MovieGrid movies={movies} onSelect={setSelectedMovie} />
