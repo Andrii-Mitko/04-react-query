@@ -1,75 +1,86 @@
-# React + TypeScript + Vite
+# 04-react-query
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules
+Movie search app built with React, TypeScript and TanStack Query. Search for movies via The Movie Database (TMDB) API, browse results with pagination and open details in a modal.
 
-Currently, two official plugins are available:
+**Live demo:** https://04-react-query-lyart-chi.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Movie search by title
+- Pagination with preserved previous results while loading (`keepPreviousData`)
+- Movie details in a modal window (close on Escape / backdrop click)
+- Loading and error states
+- Toast notification when nothing is found
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Tech stack
 
-Note: This will impact Vite dev & build performances.
+- React 19, TypeScript, Vite
+- TanStack Query v5
+- Axios
+- react-paginate
+- react-hot-toast
+- CSS Modules, modern-normalize
 
-## Expanding the ESLint configuration
+## Getting started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Clone the repository:
 
-```js
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```bash
+git clone https://github.com/Andrii-Mitko/04-react-query.git
+cd 04-react-query
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Install dependencies:
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
-
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```bash
+npm install
 ```
+
+3. Create a `.env` file in the project root and add your TMDB Read Access Token:
+
+```env
+VITE_TMDB_TOKEN=your_tmdb_read_access_token
+```
+
+4. Start the dev server:
+
+```bash
+npm run dev
+```
+
+## Scripts
+
+| Command           | Description                         |
+| ----------------- | ----------------------------------- |
+| `npm run dev`     | Start development server            |
+| `npm run build`   | Type-check and build for production |
+| `npm run preview` | Preview the production build        |
+| `npm run lint`    | Run ESLint                          |
+
+## Project structure
+
+```text
+src/
+├── components/
+│   ├── App/
+│   ├── ErrorMessage/
+│   ├── Loader/
+│   ├── MovieGrid/
+│   ├── MovieModal/
+│   ├── Pagination/
+│   └── SearchBar/
+├── services/       # API requests (TMDB)
+├── types/          # TypeScript types
+└── main.tsx
+```
+
+## Deployment
+
+The app is deployed on Vercel. Add the `VITE_TMDB_TOKEN` environment variable in **Project → Settings → Environment Variables** before deploying.
+
+## Author
+
+**Andrii Mitko**
+
+- Portfolio: https://andrii-mitko-brand.vercel.app
+- GitHub: https://github.com/Andrii-Mitko
